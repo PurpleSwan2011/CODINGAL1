@@ -7,11 +7,11 @@ class FruitQuiz:
                        fruit,color=random.choice(list(self.fruits.items()))
                        print("what is the color of {}".format(fruit))
                        user_answer=input()
-if(user_answer.lower()==color):
+                       if(user_answer.lower()==color):
     
-    print("c ans")
-else:
-    print("wr ans")
+                               print("c ans")
+                       else:
+                               print("wr ans")
 option=int(input("enter"))
 if(option):
     print("welcs")
