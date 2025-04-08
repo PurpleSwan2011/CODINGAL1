@@ -14,6 +14,6 @@ else:
     print("wr ans")
 option=int(input("enter"))
 if(option):
-print("welcs")
+    print("welcs")
 fq=FruitQuiz()
 fq.quiz()
