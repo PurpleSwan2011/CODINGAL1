@@ -15,3 +15,20 @@ def display():
         message="\ncongragulations for ur new account!"
         textbox.inser(END,greet)
         textbox.inser(END,message)
+textbox = Text(bg="#BEBEBE", fg="black")
+
+# Add Button, when pressed, message will be displayed
+btn = Button(text="Create Account", command=display, bg="red")
+
+# Arrange all widgets
+frame.place(x=20, y=0)
+lbl1.place(x=20, y=20)
+name_entry.place(x=150, y=20)
+lbl2.place(x=20, y=80)
+email_entry.place(x=150, y=80)
+lbl3.place(x=20, y=140)
+pass_entry.place(x=150, y=140)
+btn.place(x=130, y=210)
+textbox.place(y=250)
+
+root.mainloop()
