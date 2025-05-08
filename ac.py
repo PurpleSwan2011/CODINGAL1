@@ -1,45 +1,57 @@
-import tkinter as tk
-from tkinter import messagebox
-from datetime import datetime
+# Import necessary libraries
+from tkinter import *
+import datetime
 
-def calculate_age():
-    try:
-        dob = dob_entry.get()
-        dob_date = datetime.strptime(dob, "%d-%m-%Y")
-        today = datetime.today()
-        age_years = today.year - dob_date.year
-        age_months = today.month - dob_date.month
-        age_days = today.day - dob_date.day
+# Create Window
+root = Tk()
+root.title('Age Calculator App')
+root.geometry('400x400')
 
-        if age_days < 0:
-            age_months -= 1
-            age_days += 30  # Approximation for days in a month
-        if age_months < 0:
-            age_years -= 1
-            age_months += 12
+# Create a frame to organize elements better
+frame = Frame(master=root, height=200, width=360, bg="#FAB072")
 
-        result_label.config(text=f"Your Age: {age_years} Years, {age_months} Months, {age_days} Days")
-    except ValueError:
-        messagebox.showerror("Invalid Input", "Please enter the date in DD-MM-YYYY format.")
+# Add widgets
+# Add Label
+lbl1 = Label(frame, text="Name", bg="navyblue", fg='white', width=12)
+lbl2 = Label(frame, text="Year", bg="navyblue", fg='white', width=12)
+lbl3 = Label(frame, text="Month", bg="navyblue", fg='white', width=12)
+lbl4 = Label(frame, text="Date", bg="navyblue", fg='white', width=12)
 
-# Create the main window
-root = tk.Tk()
-root.title("Age Calculator")
-root.geometry("400x200")
+# Use Entry Widget to create a text box for user to enter details
+name_entry = Entry(frame)
+year_entry = Entry(frame)
+month_entry = Entry(frame)
+date_entry = Entry(frame)
 
-# Input label and entry
-dob_label = tk.Label(root, text="Enter your Date of Birth (DD-MM-YYYY):")
-dob_label.pack(pady=10)
-dob_entry = tk.Entry(root, width=20)
-dob_entry.pack(pady=5)
 
-# Calculate button
-calculate_button = tk.Button(root, text="Calculate Age", command=calculate_age)
-calculate_button.pack(pady=10)
+# Function to display message
+def calculate():
+  name = name_entry.get()
+  year = int(year_entry.get())
+  today = datetime.date.today()
+  age = today.year - year
+  greet = "Hey " + name
+  message = "\nYour age is: " + str(age)
+  textbox.insert(END, greet)
+  textbox.insert(END, message)
 
-# Result label
-result_label = tk.Label(root, text="", font=("Arial", 12))
-result_label.pack(pady=10)
 
-# Run the application
+# Textbox to display message
+textbox = Text(bg="gray", fg="white")
+
+# Add Button, when pressed, message will be displayed
+btn = Button(text="Calculate", command=calculate, bg="red")
+
+# Arrange all widgets
+frame.place(x=20, y=0)
+lbl1.place(x=20, y=20)
+name_entry.place(x=150, y=20)
+lbl2.place(x=20, y=50)
+year_entry.place(x=150, y=50)
+lbl3.place(x=20, y=80)
+month_entry.place(x=150, y=80)
+lbl4.place(x=20, y=110)
+date_entry.place(x=150, y=110)
+btn.place(x=140, y=210)
+textbox.place(y=250)
 root.mainloop()
