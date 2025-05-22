@@ -17,7 +17,7 @@ def open_file():
         input_file.close()
     window.title(f"codingal text editor-{filepath}")
 def save_file():
-        filepath=asksaveasfilename(defautextension="txt",filetypes=[("text files","*.txt"),("all files","*.*")])
+        filepath=asksaveasfilename(defaultextension="txt",filetypes=[("text files","*.txt"),("all files","*.*")])
         if not filepath:
             return
         with open(filepath,"w") as output_file:
